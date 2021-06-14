@@ -1,0 +1,62 @@
+.checkout-card{
+    background: cadetblue;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+
+.container-checkout-card-img{
+    width: 100px;
+    height: 90%;
+    background-color: floralwhite;
+    border-radius: 5px;
+    /* padding-bottom: 5px; */
+    margin: 5px 10px;
+}
+
+.card-img-checkout{
+    width: 100px;
+}
+
+.container-checkout-card-information{
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    width: 212px;
+}
+.container-checkout-card-information-titulo{
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.54);
+    
+}
+.container-checkout-card-information-money{
+    justify-content: space-between;
+    margin: 0px 14px;
+}
+.checkout-card-price{
+    font-size: 17px;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.54);
+}
+.checkout-card-cantidad-text{
+    font-size: 11   px;
+    color: bisque;
+}
+@media (max-width:599px) {
+    .checkout-card{
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    
+}
+@media (max-width:350px) {
+    .checkout-card{
+        margin: 5px 0;
+    }
+    .container-checkout-card-information{
+        width: 170px;
+    }
+}
+

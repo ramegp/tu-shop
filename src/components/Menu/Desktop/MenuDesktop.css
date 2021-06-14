@@ -1,0 +1,21 @@
+.menu-desktop-icon-cart{
+    font-size: 20px;
+}
+.menu-desktop-links{
+    color: white;
+    margin: 0 1.5rem;
+
+}
+.menu-desktop-links:active,.menu-desktop-links:hover{
+    color: black;
+    text-decoration: none;
+}
+.menu-desktop-container-links{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+}

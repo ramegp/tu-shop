@@ -1,0 +1,24 @@
+.root {
+  margin: 10px;
+  /* max-width: 340px; */
+  height: auto;
+  background-color: #ffc8cd !important;
+}
+
+.card-media {
+  height: 0;
+  padding-top: 56.25%;
+}
+.card-titulo {
+  color: black;
+}
+.card-item-price {
+  font-weight: bolder;
+}
+
+@media (max-width:767px) {
+    .root{
+        min-width: 90%;
+        
+    }
+}
