@@ -4,20 +4,16 @@ import Grid from "@material-ui/core/Grid";
 import CardCheckout from "../CardCheckout/CardCheckout";
 import BuysData from "../BuysData/BuysData";
 import Typography from "@material-ui/core/Typography";
-import { Container } from '@material-ui/core';
+import { Container } from "@material-ui/core";
 
-import { useStateValue } from '../../../StateProvider'
-
-
+import { useStateValue } from "../../../StateProvider";
 
 function CheckoutDesktop() {
-
-  const [{basket}, dispatch] = useStateValue();
-
+  const [{ basket }, dispatch] = useStateValue();
 
   return (
-    <Container maxWidth="xl" className="container-checkout-desktop">
-            <Grid container spacing={2}>
+    <Container maxWidth="xl" className="container-checkout-desktop mb-8">
+      <Grid container spacing={2}>
         <Grid item xs={12}>
           <Typography variant="h3" color="textSecondary" component="p">
             Contenido Carrito
@@ -29,19 +25,19 @@ function CheckoutDesktop() {
           sm={8}
           className="d-flex justify-content-center flex-wrap"
         >
-          {basket?.map((item)=>(
-            <CardCheckout name={item.name} price={item.price} image={item.image}/>
+          {basket?.map((item) => (
+            <CardCheckout
+              name={item.name}
+              price={item.price}
+              image={item.image}
+            />
           ))}
-          {/* <CardCheckout />
-          <CardCheckout />
-          <CardCheckout /> */}
         </Grid>
         <Grid item xs={12} sm={4}>
-            <BuysData />
+          <BuysData />
         </Grid>
       </Grid>
     </Container>
-
   );
 }
 

@@ -1,12 +1,21 @@
 .container-checkout-desktop{
-    margin-top: 80px;
     background-color: rgb(232, 163, 241);
     width: 95vw !important;
     border-radius: 5px;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    padding-top: 80px;
 }
-
+@media (max-width:767px) {
+    .container-checkout-desktop{
+        
+        padding-top: 10px;
+        
+    }
+}
 @media (max-width:500px) {
     .container-checkout-desktop{
         width: 100% !important;
+        
     }
 }
