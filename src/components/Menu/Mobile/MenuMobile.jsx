@@ -49,7 +49,7 @@ export default function DenseAppBar() {
           </Grid>
           <Grid item xs={3}>
             <IconButton aria-label="delete">
-              <ShoppingCartOutlinedIcon className="menu-mobile-icons" />
+            <Link to="/checkout-page"><ShoppingCartOutlinedIcon className="menu-mobile-icons" /></Link>
             </IconButton>
           </Grid>
         </Toolbar>
