@@ -1,0 +1,17 @@
+.title-home{
+    font-size: 3em;
+    font-family: 'SignatureMoments';
+    margin-bottom: 70px;
+}
+
+@media (max-width:470px) {
+    .title-home{
+        font-size: 1.5em;
+    }
+}
+
+/* Import fonts */
+@font-face {
+	font-family: "SignatureMoments";
+	src: url("../../assets/fonts/signature_moments/Signature\ Moments.ttf");
+}

@@ -1,0 +1,41 @@
+.remove-txt-decoration{
+    text-decoration: none;
+}
+.remove-txt-decoration:hover{
+    text-decoration: none;
+    background-color: rgb(86, 16, 151);
+    box-shadow: 0px 0px 10px rgb(215, 177, 250), 0px 0px 15px rgb(154, 48, 253);
+}
+.remove-txt-decoration:hover .btn-home{
+    color: white;
+}
+.size-btn-home{
+    width: 400px;
+    background-color: rgb(30, 109, 146);
+    border-radius: 10px;
+    
+}
+.btn-home{
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.5em;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+.remove-txt-decoration{
+    box-shadow: 0px 0px 10px white ;    
+}
+
+
+
+
+@media (max-width:470px) {
+    .size-btn-home{
+        width: 70%;
+        padding: 5px;
+    }
+    .btn-home{
+        font-size: .8em;
+    }
+}

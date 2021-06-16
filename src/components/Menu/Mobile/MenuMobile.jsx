@@ -34,7 +34,7 @@ export default function DenseAppBar() {
         <Toolbar variant="dense">
         <Grid item xs={3}>
             <IconButton aria-label="delete">
-              <Link to="/home"><HomeIcon className="menu-mobile-icons"/></Link>
+              <Link to="/"><HomeIcon className="menu-mobile-icons"/></Link>
             </IconButton>
           </Grid>
           <Grid item xs={3}>

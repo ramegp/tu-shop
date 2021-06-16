@@ -15,7 +15,7 @@ import Shop from './pages/Shop/Shop'
 import { Hidden } from '@material-ui/core';
 import About from "./pages/About/About";
 import CheckoutPage from './pages/Checkout/Checkout'
-
+import AppRouter from "./router/AppRouter";
 function App() {
   return (
     <div className="App">
@@ -23,10 +23,11 @@ function App() {
         <MenuDesktop />
         <MenuMobile />
         <Switch>
-          <Route exact path="/home" component={Home}/>
+          <AppRouter/>
+          {/* <Route exact path="/" component={Home}/>
           <Route exact path="/shop" component={Shop}/>
           <Route exact path="/about" component={About}/>
-          <Route exact path="/checkout-page" component={CheckoutPage}/>
+          <Route exact path="/checkout-page" component={CheckoutPage}/> */}
         </Switch>
         
       </Router>

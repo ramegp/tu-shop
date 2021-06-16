@@ -21,7 +21,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import './MenuDesktop.css';
-import CheckoutDesktop from '../../Ticket/TicketDesktop/TicketDesktop'
 //--------
 
 const handleCart =()=>{
@@ -77,7 +76,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             <ul className="menu-desktop-container-links">
               <li>
-                <Link to="/home" className="menu-desktop-links">Home</Link>
+                <Link to="/" className="menu-desktop-links">Home</Link>
               </li>
               <li>
                 <Link to="/shop" className="menu-desktop-links">Shop</Link>
