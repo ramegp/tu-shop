@@ -10,16 +10,10 @@ import { Link } from 'react-router-dom'
 
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Badge } from '@material-ui/core';
-import Checkout from '../../Checkout/CheckoutDesktop/CheckoutDesktop';
 import { useStateValue } from '../../../StateProvider';
 
 
 //------------------------------------
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import './MenuDesktop.css';
 //--------
 
@@ -86,7 +80,11 @@ export default function ButtonAppBar() {
               </li>
             </ul>
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit">
+            <Link to="/signin">
+              Login 
+            </Link>
+          </Button>
           <Link to="/checkout-page">
           <IconButton aria-label="delete" onClick={handleClickOpen('paper')}>
             <Badge badgeContent={basket?.length} color="secondary">

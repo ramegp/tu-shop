@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import CardProduct from "../CardProducts/CardProducts";
 
@@ -14,12 +15,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ShowProducts() {
-  const [productos, setData] = useState(null);
+function ShowCategory() {
+  const [productCategory, setData] = useState(null);
+  const { category } = useParams();
   const classes = useStyles();
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
+    fetch(`https://fakestoreapi.com/products/category/${category}`)
       .then((res) => res.json())
       .then((res) => {
         setData(res);
@@ -29,8 +31,8 @@ function ShowProducts() {
   return (
     <div>
       <Grid container className="d-flex flex-wrap justify-content-center">
-        {productos !== null ? (
-          productos.map((prod, index) => {
+        {productCategory !== null ? (
+          productCategory.map((prod, index) => {
             return (
               <>
               <CardProduct
@@ -64,4 +66,4 @@ function ShowProducts() {
   );
 }
 
-export default ShowProducts;
+export default ShowCategory;

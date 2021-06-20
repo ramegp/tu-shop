@@ -11,7 +11,7 @@ function CardCheckout(props) {
   const MIN = 1;
   const MAX = 10;
 
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(props.amount);
 
   const handleAdd = () =>{
     (count < MAX) ? setCount( count + 1 ) : setCount(10)

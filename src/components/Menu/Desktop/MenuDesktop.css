@@ -4,6 +4,8 @@
 .menu-desktop-links{
     color: white;
     margin: 0 1.5rem;
+    font-family: "LuoisGeorgeItalic";
+    font-size: 1.5rem;
 
 }
 .menu-desktop-links:active,.menu-desktop-links:hover{

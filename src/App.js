@@ -4,17 +4,9 @@ import MenuDesktop from "./components/Menu/Desktop/MenuDesktop";
 import MenuMobile from "./components/Menu/Mobile/MenuMobile";
 import {
   BrowserRouter as Router,
-  Route,
   Switch,
-  Link,
-  Redirect,
 } from "react-router-dom";
-import Home from './pages/Home/Home'
-import Shop from './pages/Shop/Shop'
 
-import { Hidden } from '@material-ui/core';
-import About from "./pages/About/About";
-import CheckoutPage from './pages/Checkout/Checkout'
 import AppRouter from "./router/AppRouter";
 function App() {
   return (

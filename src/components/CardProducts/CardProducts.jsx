@@ -1,26 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
-import Card from "@material-ui/core/Card";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
-import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import Grid from "@material-ui/core/Grid";
+
 
 import "./CardProducts.css";
 import { actionTypes } from "../../reducer";
 import { useStateValue } from "../../StateProvider";
+
 
 const useStyles = makeStyles((theme) => ({
   
@@ -44,6 +29,8 @@ export default function RecipeReviewCard(props) {
 
   const [expanded, setExpanded] = React.useState(false);
 
+  const [click, setClick] = React.useState(false);
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -61,15 +48,30 @@ export default function RecipeReviewCard(props) {
     })
   }
 
+  const handleClick =()=>{
+    window.location.href= `/product/${props.id + 1}`
+  }
+
   return (
-    <Card className="root">
+    <>
+      <div className="container-card-product" onClick={handleClick}>
+        <div className="card-titulo">{props.name}</div>
+        <div><img src={props.img} className="img-card-product"/></div>
+        <div className="card-information">
+          <div className="card-categoria">Categoria</div>
+          <div className="card-categoria-value">{props.category}</div>
+        </div>
+      </div>
+
+
+    {/* <Card className="root" onClick={handleClick}>
       <CardHeader className="card-titulo" title={props.name} subheader={props.category} />
       <CardMedia
         className="card-media"
         image={props.img}
         title={props.name}
       />
-      <CardContent>
+      <CardContent className="card-content-product">
         <Typography variant="body2" color="textSecondary" component="p">
           {props.description}
         </Typography>
@@ -104,6 +106,7 @@ export default function RecipeReviewCard(props) {
           </Typography>
         </CardContent>
       </Collapse>
-    </Card>
+    </Card> */}
+    </>
   );
 }

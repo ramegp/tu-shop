@@ -1,13 +1,14 @@
-import React from 'react'
-import CardProducts from '../../components/CardProducts/CardProducts';
+import React from 'react';
+import './Shop.css';
 import ShowProducts from '../../components/ShowProducts/ShowProducts';
-
+import TituloDesktop from '../../components/Titulo/TituloDesktop';
 
 function Shop() {
     return (
-        <div>
-            <h3>Aca va la tienda</h3>
-            
+        <div className="container-shop ">
+            <div className="shop-title">
+                <TituloDesktop title="Productos" />
+            </div>
             <ShowProducts />
 
 

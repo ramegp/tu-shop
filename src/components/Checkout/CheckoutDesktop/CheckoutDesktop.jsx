@@ -30,6 +30,7 @@ function CheckoutDesktop() {
               name={item.name}
               price={item.price}
               image={item.image}
+              amount={item.amount}
             />
           ))}
         </Grid>
