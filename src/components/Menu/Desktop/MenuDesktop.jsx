@@ -17,9 +17,6 @@ import { useStateValue } from '../../../StateProvider';
 import './MenuDesktop.css';
 //--------
 
-const handleCart =()=>{
-  return (alert())
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,29 +33,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
   const [{basket}, dispatch] = useStateValue();
-  //---
-  const [open, setOpen] = React.useState(false);
-  const [scroll, setScroll] = React.useState('paper');
-
-  const handleClickOpen = (scrollType) => () => {
-    setOpen(true);
-    setScroll(scrollType);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const descriptionElementRef = React.useRef(null);
-  React.useEffect(() => {
-    if (open) {
-      const { current: descriptionElement } = descriptionElementRef;
-      if (descriptionElement !== null) {
-        descriptionElement.focus();
-      }
-    }
-  }, [open]);
-  //-----
+  
 
   return (
     
@@ -86,7 +61,7 @@ export default function ButtonAppBar() {
             </Link>
           </Button>
           <Link to="/checkout-page">
-          <IconButton aria-label="delete" onClick={handleClickOpen('paper')}>
+          <IconButton aria-label="delete" /* onClick={handleClickOpen('paper')} */>
             <Badge badgeContent={basket?.length} color="secondary">
               <ShoppingCartIcon className="menu-desktop-icon-cart" />
             </Badge>      
