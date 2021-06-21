@@ -1,10 +1,10 @@
-.root {
+/* .root {
   margin: 10px;
-  /* max-width: 340px; */
+  max-width: 340px;
   height: auto;
   background-color: #ffc8cd !important;
   cursor: pointer;
-  /*  height: 350px; */
+   height: 350px;
 }
 
 .card-media {
@@ -25,7 +25,11 @@
   height: 150px;
   overflow-y: scroll;
 }
-
+ */
+.card-product-link:hover{
+  text-decoration: none;
+  transform: scale(1.05);
+}
 .container-card-product{
   margin: 7px;
   width: 300px;

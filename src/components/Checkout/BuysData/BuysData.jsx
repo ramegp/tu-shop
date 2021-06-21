@@ -12,14 +12,15 @@ function BuysData() {
 
   const obtenerTotal = () => {
     for (const item of basket) {
-      console.log(item["price"]*item["amount"])
+      /* console.log(item["price"]*item["amount"]) */
       setTotal (total + item["price"]*item["amount"])
     }
-    console.log(basket)
+    /* console.log(basket) */
   }
   React.useEffect(()=>{
     obtenerTotal()
-  },[basket])
+  },[])
+
   return (
     <Container>
       <Typography variant="h6" color="textSecondary" component="p">
