@@ -12,9 +12,10 @@ function AppRouter() {
     return (
         <div>
             <Route path="/categories/:category" component={Categories} />
-            <Route path="/product/:idProd" component={Product} />
+            
             <Route exact path="/" component={Home} />
             <Route exact path="/shop" component={Shop} />
+            <Route path="/product/:idProd" component={Product} />
             <Route exact path="/about" component={About} />
             <Route path="/checkout-page" component={CheckoutPage} />
             <Route path="/signin" component={SignIn} />

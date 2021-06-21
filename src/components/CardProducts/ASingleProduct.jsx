@@ -9,10 +9,12 @@ import { actionTypes } from "../../reducer";
 import { useStateValue } from "../../StateProvider";
 
 function ASingleProduct(props) {
+  const [{basket}, dispatch] = useStateValue();
   const max = 10;
   const min = 0;
   const [countItem, setCountItem] = React.useState(0);
-  const [{basket}, dispatch] = useStateValue();
+
+  
 
   const AddItem = ()=>{
     (countItem < max) ? setCountItem(countItem + 1): setCountItem(max);
@@ -36,7 +38,6 @@ function ASingleProduct(props) {
   }
 
   return (
-    /* No usar container */
     <>
       <div className="contaniner-ASingleProduct">
         <div className="contenedor-imagen-producto">
@@ -68,24 +69,10 @@ function ASingleProduct(props) {
             </div>
             <Button className="btn" onClick={addToBasket}> Add to cart </Button>
           </div>
-          {/* <div className="d-block">{props.name}</div>
-          <div className="d-block">{props.category}</div>
-          <div className="d-block">{props.price}</div>
-          <div className="d-block">{props.description}</div> */}
+          
         </div>
       </div>
 
-      {/* <Container maxWidth="lg" className="contaniner-ASingleProduct">
-      <div className="contenedor-imagen-producto">
-        <img src={props.img} />
-      </div>
-      <div className="contenedor-informacion-producto">
-        <p>{props.name}</p>
-        <p>{props.category}</p>
-        <p>{props.price}</p>
-        <p>{props.description}</p>
-      </div>
-    </Container> */}
     </>
   );
 }
