@@ -21,7 +21,7 @@ function LinksCategory() {
             return <li className="ul-li-category"><Link className="ul-li-link-category" to={`/categories/${cat}`}>{cat}</Link></li>;
           })
         ) : (
-          <p>cateog</p>
+          <p>Cargando categorias... </p>
         )}
       </ul>
     </div>

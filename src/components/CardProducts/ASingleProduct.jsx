@@ -9,6 +9,7 @@ import { actionTypes } from "../../reducer";
 import { useStateValue } from "../../StateProvider";
 
 function ASingleProduct(props) {
+
   const [{basket}, dispatch] = useStateValue();
   const max = 10;
   const min = 0;
@@ -67,7 +68,10 @@ function ASingleProduct(props) {
               <div className="producto-contenedor-cantidad text-center">{countItem}</div>
               <IconButton onClick={SubstractItem}>-</IconButton>
             </div>
-            <Button className="btn" onClick={addToBasket}> Add to cart </Button>
+            {
+              (countItem>=1) ? (<Button className="btn" onClick={addToBasket}> Add to cart </Button>) : (null)
+            }
+            
           </div>
           
         </div>
