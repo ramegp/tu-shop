@@ -8,22 +8,23 @@ import {
 } from "react-router-dom";
 
 import AppRouter from "./router/AppRouter";
+
+import {CarritoContexto} from './provider/CarritoContexto'
+
 function App() {
   return (
     <div className="App">
+      <CarritoContexto>
+
+      
       <Router>
         <MenuDesktop />
         <MenuMobile />
         <Switch>
           <AppRouter/>
-          {/* <Route exact path="/" component={Home}/>
-          <Route exact path="/shop" component={Shop}/>
-          <Route exact path="/about" component={About}/>
-          <Route exact path="/checkout-page" component={CheckoutPage}/> */}
         </Switch>
-        
       </Router>
-      
+      </CarritoContexto>
     </div>
   );
 }

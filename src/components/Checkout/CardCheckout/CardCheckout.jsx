@@ -6,8 +6,12 @@ import AddIcon from "@material-ui/icons/Add";
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import RemoveIcon from '@material-ui/icons/Remove';
 
+import {UseCart} from '../../../provider/CarritoContexto';
 
 function CardCheckout(props) {
+
+  const {removeItemFromArr} = UseCart();
+
   const MIN = 1;
   const MAX = 10;
 
@@ -50,7 +54,7 @@ function CardCheckout(props) {
           </Grid>
           <Grid item xs={3}>
             <IconButton>
-              <DeleteOutlineIcon />
+              <DeleteOutlineIcon onClick={()=>{removeItemFromArr({id:props.id})}}/>
             </IconButton>
           </Grid>
         </div>

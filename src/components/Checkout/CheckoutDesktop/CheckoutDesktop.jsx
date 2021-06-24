@@ -8,7 +8,12 @@ import { Container } from "@material-ui/core";
 
 import { useStateValue } from "../../../StateProvider";
 
+import {UseCart} from '../../../provider/CarritoContexto'
+
 function CheckoutDesktop() {
+
+  const {cart} = UseCart();
+
   const [{ basket }, dispatch] = useStateValue();
 
   return (
@@ -25,14 +30,16 @@ function CheckoutDesktop() {
           sm={8}
           className="d-flex justify-content-center flex-wrap"
         >
-          {basket?.map((item) => (
+          {cart?.map((item) => (
             <CardCheckout
               name={item.name}
               price={item.price}
               image={item.image}
               amount={item.amount}
+              id={item.id}
             />
           ))}
+          {console.log(cart)}
         </Grid>
         <Grid item xs={12} sm={4}>
           <BuysData />
