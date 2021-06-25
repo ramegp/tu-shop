@@ -39,7 +39,7 @@ function CheckoutDesktop() {
               id={item.id}
             />
           ))}
-          {console.log(cart)}
+          
         </Grid>
         <Grid item xs={12} sm={4}>
           <BuysData />
