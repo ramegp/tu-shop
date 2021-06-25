@@ -12,6 +12,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Badge } from '@material-ui/core';
 import { useStateValue } from '../../../StateProvider';
 
+import { UseCart } from "../../../provider/CarritoContexto";
 
 //------------------------------------
 import './MenuDesktop.css';
@@ -33,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
   const [{basket}, dispatch] = useStateValue();
+
+  const { cart } = UseCart()
   
 
   return (
@@ -62,7 +65,7 @@ export default function ButtonAppBar() {
           </Button>
           <Link to="/checkout-page">
           <IconButton aria-label="delete" /* onClick={handleClickOpen('paper')} */>
-            <Badge badgeContent={basket?.length} color="secondary">
+            <Badge badgeContent={cart?.length} color="secondary">
               <ShoppingCartIcon className="menu-desktop-icon-cart" />
             </Badge>      
           </IconButton>

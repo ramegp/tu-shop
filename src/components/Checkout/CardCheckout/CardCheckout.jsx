@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CardCheckout.css";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
@@ -30,7 +30,6 @@ function CardCheckout(props) {
 
   function auxiliar1(){
     setCount(count + 1);
-    console.log(count)
     UpDateAmountAdd({ id: props.id, amount: count })
   }
 
@@ -38,9 +37,9 @@ function CardCheckout(props) {
     setCount(count - 1);
     UpDateAmountSubtract({ id: props.id, amount: count })
   }
-
+  
   return (
-    <div className="d-flex checkout-card">
+    <div className="d-flex checkout-card" id={`CardCheckout${props.id}`}>
       <div className="container-checkout-card-img">
         <img src={props.image} alt="" className="card-img-checkout" />
       </div>
@@ -72,6 +71,12 @@ function CardCheckout(props) {
               <DeleteOutlineIcon
                 onClick={() => {
                   removeItemFromArr({ id: props.id });
+                  
+                  /* let padre = document.getElementById("padreCardsCheckout");
+                  let hijo = document.getElementById(`CardCheckout${props.id}`)
+                  padre.removeChild(hijo) */
+                  /* document.removeChild(document.getElementById(`CardCheckout${props.id}`)) */
+                  
                 }}
               />
             </IconButton>

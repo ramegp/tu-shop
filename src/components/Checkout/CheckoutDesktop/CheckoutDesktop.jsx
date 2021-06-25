@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import "./CheckoutDesktop.css";
 import Grid from "@material-ui/core/Grid";
 import CardCheckout from "../CardCheckout/CardCheckout";
@@ -16,6 +16,13 @@ function CheckoutDesktop() {
 
   const [{ basket }, dispatch] = useStateValue();
 
+  const [arr, setArr] = useState([])
+
+  /* useEffect(() => {
+    setArr(cart)
+    
+  }, [cart]) */
+
   return (
     <Container maxWidth="xl" className="container-checkout-desktop mb-8">
       <Grid container spacing={2}>
@@ -29,9 +36,11 @@ function CheckoutDesktop() {
           xs={12}
           sm={8}
           className="d-flex justify-content-center flex-wrap"
+          id="padreCardsCheckout"
         >
           {cart?.map((item) => (
             <CardCheckout
+              key={item.id}
               name={item.name}
               price={item.price}
               image={item.image}

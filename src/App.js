@@ -10,7 +10,7 @@ import {
 
 import AppRouter from "./router/AppRouter";
 
-import {CarritoContexto} from './provider/CarritoContexto'
+import { CarritoContexto } from './provider/CarritoContexto'
 
 //import Loader from './components/Loader/Loader'
 
@@ -23,7 +23,7 @@ function App() {
    
   },[])
  */
-  
+
 
   return (
     <div className="App">
@@ -31,15 +31,15 @@ function App() {
       {/* <Loader load={load} /> */}
       <CarritoContexto>
 
-      
-      <Router>
-      
-        <MenuDesktop />
-        <MenuMobile />
-        <Switch>
-          <AppRouter/>
-        </Switch>
-      </Router>
+
+        <Router>
+
+          <MenuDesktop />
+          <MenuMobile />
+          <Switch>
+            <AppRouter />
+          </Switch>
+        </Router>
 
       </CarritoContexto>
     </div>

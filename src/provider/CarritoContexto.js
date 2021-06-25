@@ -35,7 +35,7 @@ export function CarritoContexto({children}) {
     }
 
     function removeItemFromArr ( obj ) {
-        
+       
         for(var i = cart.length - 1; i >= 0; i--) {
             if(cart[i].id === obj.id) {
                cart.splice(i, 1);
@@ -43,6 +43,7 @@ export function CarritoContexto({children}) {
         }
     
         setCart([...cart])
+       
     }
     
     function UpDateAmountAdd(obj) {
