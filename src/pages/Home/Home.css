@@ -1,8 +1,109 @@
 .container-home{
     background-color: #bcd6d6;
+    background-image: url("../../assets/img/201812071533_deli.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.contenedor-titulo-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'tiza';
+    position: absolute;
+    top: 100px;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+}
+
+.titulo-home-r1{
+    font-size: 3em;
+}
+.titulo-home-r2{
+    font-size: 1em;
+}
+
+.titulo-home-r3{
+    font-size: 5.5em;
+}
+.contenedor-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container-home .btn-home-tienda{
+    font-family: 'tiza';
+    color: rgb(233, 227, 227);
+    font-size: 30px;
+    position: absolute;
+    bottom: 80px;
+    text-align: center;
+    text-shadow: 0px 0px 5px black;
+}
+.container-home .btn-home-tienda:hover{
+    color: rgb(68, 194, 36);
+    transform: scale(1.2);
+}
+
+/* Querys */
+
+@media (max-width:965px) {
+    .titulo-home-r1{
+        font-size: 2em;
+    }
+    .titulo-home-r2{
+        font-size: 1em;
+    }
+    
+    .titulo-home-r3{
+        font-size: 3.5em;
+    }
+}
+
+@media (max-width:620px) {
+    .titulo-home-r1{
+        font-size: 1.5em;
+        margin: 1.5em 0;
+    }
+    .titulo-home-r2{
+        font-size: 0.8em;
+        margin: 1.5em 0;
+    }
+    
+    .titulo-home-r3{
+        font-size: 2.5em;
+        margin: 1.5em 0;
+    }
+}
+
+@media (max-width:445px) {
+    .titulo-home-r1{
+        font-size: 1em;
+        margin: 1.5em 0;
+    }
+    .titulo-home-r2{
+        font-size: 0.8em;
+        margin: 1.5em 0;
+    }
+    
+    .titulo-home-r3{
+        font-size: 1.5em;
+        margin: 1.5em 0;
+    }
+}
+
+/* Import fonts */
+@font-face {
+	font-family: "tiza";
+	src: url("../../assets/fonts/tiza.ttf");
+}
+
+
+

@@ -11,37 +11,32 @@ import {
 import AppRouter from "./router/AppRouter";
 
 import { CarritoContexto } from './provider/CarritoContexto'
+import { UserAdministrator } from './provider/UserAdministrator'
 
-//import Loader from './components/Loader/Loader'
 
 function App() {
 
-  /* const [load, setLoad ] = React.useState(false)
 
-  React.useEffect(()=>{
-    setTimeout(()=>{setLoad(true)},3000)
-   
-  },[])
- */
 
 
   return (
     <div className="App">
 
-      {/* <Loader load={load} /> */}
-      <CarritoContexto>
+      <UserAdministrator>
+        <CarritoContexto>
 
 
-        <Router>
+          <Router>
 
-          <MenuDesktop />
-          <MenuMobile />
-          <Switch>
-            <AppRouter />
-          </Switch>
-        </Router>
+            <MenuDesktop />
+            <MenuMobile />
+            <Switch>
+              <AppRouter />
+            </Switch>
+          </Router>
 
-      </CarritoContexto>
+        </CarritoContexto>
+      </UserAdministrator>
     </div>
   );
 }

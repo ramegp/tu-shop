@@ -1,0 +1,14 @@
+.container-banner-titulo-restaurant{
+    background-color: rgb(122, 128, 117);
+    color: rgb(35, 226, 121);
+    font-family: 'tiza';
+    font-size: 3rem;
+    padding-top: 70px;
+}
+
+
+@media (max-width:768px) {
+    .container-banner-titulo-restaurant{
+        padding-top: 10px;
+    }
+}

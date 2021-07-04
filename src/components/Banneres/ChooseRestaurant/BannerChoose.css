@@ -1,0 +1,71 @@
+.banner-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  margin: 50px;
+}
+.banner-link{
+    padding-top: 10px;
+    text-shadow: 0px 0px 2px black;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.banner-link:hover{
+    text-decoration: none;
+    
+}
+.banner-link:hover {
+    background-color: rgba(0, 0, 0, 0.705);
+    box-shadow: 0px 0px 2px white;
+    
+}
+.banner-link:hover .banner-name-restaurant{
+    color: lavender;
+    transform: scale(1.1);
+    text-shadow: 0px 0px 2px black;
+}
+.banner-img {
+  object-fit: cover;
+  width: 50px;
+}
+.banner-container .banner-name-restaurant {
+  width: 20px;
+  word-wrap: break-word;
+  text-align: center;
+  font-family: 'tiza';
+  font-size: 2rem;
+}
+.banner-container .banner-name-restaurant:hover{
+}
+@media (max-width:750px){
+  .banner-container{
+    margin: 30px;
+  }
+}
+@media (max-width:450px) {
+    /* .banner-link{
+        display: none;
+    } */
+    .banner-container {
+        flex-direction: row;
+        height: 150px;
+        padding: 0 20px;
+    }
+    
+    .banner-container .banner-name-restaurant{
+        width: 150px;
+    }
+    
+}
+
+/* Import fonts */
+@font-face {
+  font-family: "tiza";
+  src: url("../../../assets/fonts/tiza.ttf");
+}

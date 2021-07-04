@@ -3,14 +3,11 @@ import React from "react";
 import "./CardProducts.css";
 import { Link } from "react-router-dom";
 
-/* import { actionTypes } from "../../reducer";
-import { useStateValue } from "../../StateProvider";
- */
 
 export default function RecipeReviewCard(props) {
   return (
     <>
-      <Link className="card-product-link" to={`/product/${props.id + 1}`}>
+      <Link className="card-product-link" to={`/choose-restaurant/${props.resto}/${props.id}`}>
         <div className="container-card-product">
           <div className="card-titulo">{props.name}</div>
           <div>

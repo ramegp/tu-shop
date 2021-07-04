@@ -72,11 +72,6 @@ function CardCheckout(props) {
                 onClick={() => {
                   removeItemFromArr({ id: props.id });
                   
-                  /* let padre = document.getElementById("padreCardsCheckout");
-                  let hijo = document.getElementById(`CardCheckout${props.id}`)
-                  padre.removeChild(hijo) */
-                  /* document.removeChild(document.getElementById(`CardCheckout${props.id}`)) */
-                  
                 }}
               />
             </IconButton>

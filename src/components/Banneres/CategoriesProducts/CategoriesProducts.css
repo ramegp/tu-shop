@@ -1,0 +1,28 @@
+.link-container-categories-products{
+    color: black;
+}
+.link-container-categories-products:hover{
+    color: blanchedalmond;
+    text-decoration: none;
+}
+.link-container-categories-products:hover .categories-products-subrayado{
+    background-color: white;
+    width: 100%;
+}
+.container-categories-products{
+    font-family: 'tiza';
+    padding: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+.categories-products-subrayado{
+    background-color: white;
+    width: 0%;
+    height: 2px;
+    border-radius: 5px;
+    transition: all 1s;
+    
+}
+.container-categories-products:hover{
+    
+}

@@ -37,9 +37,7 @@ function About() {
           </Grid>
         </Grid>
       </Grid>
-      {/* <TituloDesktop title={name} />
-    <div className="d-flex justify-content-center align-items-center container-about">  
-    </div> */}
+      
     </>
   );
 }

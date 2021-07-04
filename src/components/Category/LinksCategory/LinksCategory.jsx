@@ -11,7 +11,6 @@ function LinksCategory() {
       .then((cat) => {
         setCategorias(cat);
       });
-    //console.log(categorias);
   }, []);
   return (
     <div>

@@ -24,8 +24,8 @@ export default function DenseAppBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root} className="d-md-none fixed-bottom w-100">
-      <AppBar position="static">
+    <div className={classes.root} className="d-md-none fixed-bottom w-100 ">
+      <AppBar position="static" className="bg-menu-mobile">
         <Toolbar variant="dense">
         <Grid item xs={3}>
             <IconButton aria-label="delete">

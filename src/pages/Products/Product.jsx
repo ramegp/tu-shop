@@ -30,15 +30,7 @@ function Product() {
   return (
     <div className="">
       <Grid container className="d-flex justify-content-center alignItems-center">
-        {/* <Typography>
-          {producto["title"]}
-          </Typography>
-          <Typography>
-          {producto["category"]}
-          </Typography>
-          <Typography>
-          {producto["price"]}
-          </Typography> */}
+        
         {producto !== null ? (
           <>
             <ASingleProduct
@@ -49,8 +41,7 @@ function Product() {
               img={producto.image}
               description={producto.description}
             />
-            {/* <Typography>{producto.title}</Typography>
-            <Typography>{producto.category}</Typography> */}
+            
           </>
         ) : (
           <h3>Cargando</h3>

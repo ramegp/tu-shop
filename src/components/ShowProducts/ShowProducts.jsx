@@ -41,16 +41,7 @@ function ShowProducts() {
                     img={prod.image}
                     description={prod.description}
                   />
-                {/* <Grid item xs={12} sm={6} md={3} lg={2}>
-                  <CardProduct
-                    name={prod.title}
-                    category={prod.category}
-                    price={prod.price}
-                    id={index}
-                    img={prod.image}
-                    description={prod.description}
-                  />
-                </Grid> */}
+                
               </>
             );
           })

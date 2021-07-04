@@ -1,0 +1,23 @@
+.container-choose-restaurant{
+    background-color: #cccbcb;
+    background-image: url("../../assets/img/fondoRestaurant/fondo-010.jpg");
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+@media (max-width:450px) {
+    .container-choose-restaurant{
+        flex-wrap: wrap;
+        padding-top: 15px;
+        padding-bottom: 100px;
+        height: auto;
+        
+    }
+    .container-choose-restaurant:nth-child(3){
+       border: 2px solid black;
+    }
+}
