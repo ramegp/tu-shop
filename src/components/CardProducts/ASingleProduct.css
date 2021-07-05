@@ -8,6 +8,8 @@
   border-radius: 5px;
   border: 1px solid grey;
   box-shadow: 0px 0px 20px black;
+  background-color: rgb(233, 231, 231);
+  margin-bottom: 20px;
 }
 .contaniner-ASingleProduct .contenedor-imagen-producto {
   /* width: 150px; */

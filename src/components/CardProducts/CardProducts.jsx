@@ -12,6 +12,7 @@ export default function RecipeReviewCard(props) {
           <div className="card-titulo">{props.name}</div>
           <div>
             <img src={props.img} alt={`imagen-${props.name}`} className="img-card-product" />
+            {console.log(props.img)}
           </div>
           <div className="card-information">
             <div className="card-categoria">Categoria</div>

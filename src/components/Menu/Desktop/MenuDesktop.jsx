@@ -76,7 +76,7 @@ export default function ButtonAppBar() {
               </Link>
             </li>
             <li>
-              <Link to="/shop" className="menu-desktop-links">
+              <Link to="/choose-restaurant" className="menu-desktop-links">
                 Shop
               </Link>
             </li>

@@ -10,22 +10,28 @@ import Product from '../pages/Products/Product';
 import ChooseRestaurant from '../pages/ChooseRestaurant/ChooseRestaurant';
 import Restaurant from '../pages/Restaurants/Restaurant';
 import SelectedProduct from '../pages/ShowOnlyProduct/SelectedProduct';
+import CategoryRestaurant from '../pages/CategoryRestaurant/CategoryRestaurant';
 function AppRouter() {
     return (
         <div>
-            <Route path="/categories/:category" component={Categories} />
+            {/* <Route path="/categories/:category" component={Categories} /> */}
 
+            <Route exact path="/choose-restaurant/:idResto/cat/:idCat" component={CategoryRestaurant}/>
             <Route exact path="/choose-restaurant/:idResto/:idProduc" component={SelectedProduct}/>
 
 
             <Route exact path="/choose-restaurant/:idResto" component={Restaurant}/>
+            <Route exact path="/choose-restaurant" component={ChooseRestaurant}/>
             <Route exact path="/" component={Home} />
-            <Route exact path="/shop" component={Shop} />
-            <Route path="/product/:idProd" component={Product} />
+
+            {/* <Route exact path="/shop" component={Shop} /> */}
+
+
+            {/* <Route path="/product/:idProd" component={Product} /> */}
             <Route exact path="/about" component={About} />
             <Route path="/checkout-page" component={CheckoutPage} />
             <Route path="/signin" component={SignIn} />
-            <Route exact path="/choose-restaurant" component={ChooseRestaurant}/>
+            
             
             {/* 
             <Route path="/about/:name" component={About} />

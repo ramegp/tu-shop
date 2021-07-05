@@ -54,7 +54,7 @@ function ShowFood(props) {
       <div className="d-flex flex-wrap justify-content-center">{takeCategories(products).map((cat,index)=>{
         return(
           <>
-            <CategoriesProducts name={cat}/>
+            <CategoriesProducts name={cat} resto={props.name} />
           </>
         )
       })}</div>
@@ -68,7 +68,7 @@ function ShowFood(props) {
                 category={prod.category}
                 price={prod.price}
                 id={prod.id}
-                img={`../../../public/assets/img/deliciosa-comida-rapida-estilo-pop-art_24908-61615.jpg`}
+                img={`/public/assets/img/deliciosa-comida-rapida-estilo-pop-art_24908-61615.jpg`}
                 description={prod.description}
                 resto={props.name}
                 

@@ -34,7 +34,7 @@ export default function DenseAppBar() {
           </Grid>
           <Grid item xs={3}>
             <IconButton aria-label="delete">
-              <Link to="/shop"><StorefrontOutlinedIcon className="menu-mobile-icons"/></Link>
+              <Link to="/choose-restaurant"><StorefrontOutlinedIcon className="menu-mobile-icons"/></Link>
             </IconButton>
           </Grid>
           <Grid item xs={3}>
