@@ -1,4 +1,4 @@
-import React, { useSty } from "react";
+import React, { } from "react";
 import "./BannerChoose.css";
 import { Link } from "react-router-dom";
 

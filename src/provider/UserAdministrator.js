@@ -13,19 +13,35 @@ export function useUserAdministrator() {
 export function UserAdministrator({ children }) {
     const UID_ADMIN = "YAnjgq2IvxYuFrOGNyqgufOJAUx1";
 
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
+
     const [ES_ADMIN, setES_ADMIN] = useState(false);
 
-    function probandoEstado() {
-        if (user) {
-            setES_ADMIN(isAdmin())
-        } else {
-            setES_ADMIN(false);
-        }
-        
+    function addUserLogeado(obj) {
+        setUser(obj);
+        administrador();
     }
 
+    function printUser() {
+        console.log(user.email)
+        console.log(ES_ADMIN)
+    }
     
+
+    function administrador() {
+        
+        if (user) {
+            
+            if (user.uid === UID_ADMIN) {
+                setES_ADMIN(true);
+            } else {
+                setES_ADMIN(false)
+            }
+        } else {
+            setES_ADMIN(false)
+        }
+    }
+
 
     function handleAuth(e) {
         e.preventDefault()
@@ -33,11 +49,10 @@ export function UserAdministrator({ children }) {
 
         firebase.auth().signInWithPopup(provider)
             .then((result) => {
-                console.log(`${result.user.email} ha iniciado sesion`);
-                let Aux_user = firebase.auth().currentUser;
-                setUser(Aux_user);
-                console.log(user);
-                probandoEstado()
+                console.log(`${result} ha iniciado sesion`);
+                //let Aux_user = firebase.auth().currentUser;
+                setUser(result.user);
+                administrador();
             })
             .catch(error => console.log(`Error ${error.code}: ${error.message}`))
     }
@@ -47,18 +62,16 @@ export function UserAdministrator({ children }) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 // Signed in
-                console.log(userCredential);
+                //console.log(userCredential);
+                console.log("Usuario creado");
                 let Aux_user = firebase.auth().currentUser;
                 setUser(Aux_user);
-                console.log(user)
-                var user = userCredential.user;
-                probandoEstado()
+                administrador()
                 // ...
             })
             .catch((error) => {
-                console.log(error)
-                var errorCode = error.code;
-                var errorMessage = error.message;
+                console.log(`Error ${error.code}: ${error.message}`)
+                
                 // ..
             });
     }
@@ -67,52 +80,34 @@ export function UserAdministrator({ children }) {
     function handleSingUpWithoutGoogle(email, password) {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
+            .then((result) => {
                 // Signed in
-                console.log(`${userCredential.user} Ha iniciado sesion`);
+                console.log(`${result} ....... Ha iniciado sesion`);
                 let Aux_user = firebase.auth().currentUser;
-                setUser(userCredential);
-                console.log(`usuario ingreso ${user}`)
-                probandoEstado()
-                /* var user = userCredential.user; */
-                // ...
+                setUser(Aux_user);
+                administrador()
+                
             })
             .catch((error) => {
-                var errorCode = error.code;
-                var errorMessage = error.message;
+                console.log(`Error ${error.code}: ${error.message}`)
+                
             });
     }
 
-    function isAdmin() {
-        firebase.auth().onAuthStateChanged((USER) => {
-            if (USER) {
-                // User is signed in, see docs for a list of available properties
-                // https://firebase.google.com/docs/reference/js/firebase.User
-                let uid = USER.uid;
-                console.log(`Es Admin? ${(uid === UID_ADMIN)}`)
-                return (uid === UID_ADMIN)
-                // ...
-            } else {
-                // User is signed out
-                // ...
-                return false
-            }
-        });
-    }
 
     function close() {
         firebase.auth().signOut().then(() => {
             // Sign-out successful.
             setUser()
-            probandoEstado();
-            
-          }).catch((error) => {
+            setES_ADMIN(false)
+
+        }).catch((error) => {
             // An error happened.
-          });
+        });
     }
 
     return (
-        <UserAdministratorContext.Provider value={{ user, ES_ADMIN, handleAuth, handleSingUpWithoutGoogle, handleAuthWithoutGoogle, isAdmin ,close }}>
+        <UserAdministratorContext.Provider value={{ user, ES_ADMIN, handleAuth, handleSingUpWithoutGoogle, handleAuthWithoutGoogle, close, addUserLogeado, printUser }}>
             {children}
         </UserAdministratorContext.Provider>
     )

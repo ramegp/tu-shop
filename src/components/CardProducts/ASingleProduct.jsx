@@ -24,6 +24,7 @@ function ASingleProduct(props) {
   const SubstractItem = () => {
     countItem > min ? setCountItem(countItem - 1) : setCountItem(min);
   };
+  
   const addToBasket = () => {
     dispatch({
       type: actionTypes.ADD_TO_BASKET,

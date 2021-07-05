@@ -2,18 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./ChooseRestaurant.css";
 import BannerChoose from "../../components/Banneres/ChooseRestaurant/BannerChoose";
 
-import carne from "../../assets/img/Restaurant/carne.jpg";
-import otilia from "../../assets/img/Restaurant/Otilia.jpg";
-import deniro from "../../assets/img/Restaurant/deniro.png";
-import gocha from "../../assets/img/Restaurant/gocha.jpg";
-
-import fondo01 from "../../assets/img/fondoRestaurant/fondo-001.jpg";
-import fondo02 from "../../assets/img/fondoRestaurant/fondo-002.jpg";
-import fondo03 from "../../assets/img/fondoRestaurant/fondo-003.jpg";
-import fondo04 from "../../assets/img/fondoRestaurant/fondo-004.jpg";
-import fondo05 from "../../assets/img/fondoRestaurant/fondo-005.jpg";
 import { getFirestore } from "../../firebase/firebase";
-import { Restore } from "@material-ui/icons";
+
 
 function ChooseRestaurant() {
   const [restaurants, setItems] = useState([]);

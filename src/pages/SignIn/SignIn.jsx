@@ -13,7 +13,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-import firebase from "firebase";
 import { useUserAdministrator } from "../../provider/UserAdministrator";
 
 function Copyright() {
@@ -49,15 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/* function handleAuth(e) {
-  e.preventDefault()
-  const provider = new firebase.auth.GoogleAuthProvider();
 
-  firebase.auth().signInWithPopup(provider)
-  .then(result => console.log(`${result.user.email} ha iniciado sesion`))
-  .catch(error => console.log(`Error ${error.code}: ${error.message}`))
-}
- */
 
 export default function SignIn() {
   const { handleAuth, handleAuthWithoutGoogle, handleSingUpWithoutGoogle } =
@@ -68,37 +59,7 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  /* function handleAuthWithoutGoogle(e) {
-    e.preventDefault()
-    firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Signed in
-      console.log(userCredential)
-      var user = userCredential.user;
-      // ...
-    })
-    .catch((error) => {
-      console.log(error)
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // ..
-    });
-  } */
-  /* 
-  function handleSingUpWithoutGoogle(e) {
-    e.preventDefault()
-    firebase.auth().signInWithEmailAndPassword(email, password)
-  .then((userCredential) => {
-    // Signed in
-    console.log(`${userCredential.user} Ha iniciado sesion`)
-    var user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-  });
-  } */
+
 
   return (
     <Container component="main" maxWidth="xs">
@@ -151,7 +112,7 @@ export default function SignIn() {
             className={classes.submit}
             onClick={handleAuth}
           >
-            Login with Google
+            Inicia con Google
           </Button>
           <Button
             type="submit"
@@ -164,7 +125,7 @@ export default function SignIn() {
               handleAuthWithoutGoogle(email, password);
             }}
           >
-            Sign UP
+            Registrate
           </Button>
           <Button
             type="submit"
@@ -177,7 +138,7 @@ export default function SignIn() {
               handleSingUpWithoutGoogle(email, password);
             }}
           >
-            Sign in
+            Iniciar Sesion
           </Button>
           <Grid container>
             <Grid item xs>

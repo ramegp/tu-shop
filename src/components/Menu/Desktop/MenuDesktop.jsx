@@ -39,28 +39,24 @@ export default function ButtonAppBar() {
 
   const { cart } = UseCart();
 
-  const { user, ES_ADMIN, isAdmin, close } = useUserAdministrator();
+  const { user, ES_ADMIN, close, addUserLogeado, printUser } =
+    useUserAdministrator();
   const [admin, setAdmin] = useState(false);
 
-  function esAdmin() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        let uid = user.uid;
-        return uid === "YAnjgq2IvxYuFrOGNyqgufOJAUx1";
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((USER) => {
+      if (USER) {
+        addUserLogeado(USER)
+        
         // ...
       } else {
         // User is signed out
         // ...
-        return false;
+        
       }
     });
-  }
-
-  /* useEffect(() => {
-    setAdmin(esAdmin());
-  }, [user]); */
+    setAdmin(ES_ADMIN)
+  }, [user, ES_ADMIN,admin]);
 
   return (
     <AppBar
@@ -71,9 +67,7 @@ export default function ButtonAppBar() {
         <div style={{ fontFamily: "tiza", fontSize: "12px" }}>
           El Rincon De la Hamburgesa
         </div>
-        {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton> */}
+        
         <Typography variant="h6" className={classes.title}>
           <ul className="menu-desktop-container-links">
             <li>
@@ -88,34 +82,33 @@ export default function ButtonAppBar() {
             </li>
 
             <li>
-              {ES_ADMIN ? (
-                <Link to="/about" className="menu-desktop-links">
+              {admin ? (
+                <Link to="/admin" className="menu-desktop-links">
                   Admin
-                  {console.log("Usuario admin")}
-                  {console.log(user)}
-                  {console.log(`admin ${admin}`)}
-                  {console.log(`ES_ADMIN ${ES_ADMIN}`)}
                 </Link>
               ) : (
                 <Link to="/about" className="menu-desktop-links">
                   About
-                  {console.log("usuario corriente")}
-                  {console.log(user)}
-                  {console.log(`admin ${admin}`)}
-                  {console.log(`ES_ADMIN ${ES_ADMIN}`)}
                 </Link>
               )}
             </li>
           </ul>
         </Typography>
-        <Button color="inherit">
-          <Link to="/signin">Login</Link>
-        </Button>
+        
         {user ? (
+          <>
+          <Button onClick={printUser} color="inherit">
+          {user.email.split("@")[0]}
+        </Button>
           <Button onClick={close} color="inherit">
             cerrar
           </Button>
-        ) : null}
+          </>
+        ) : (
+          <Button color="inherit">
+            <Link to="/signin">Login</Link>
+          </Button>
+        )}
         <Link to="/checkout-page">
           <IconButton
             aria-label="delete" /* onClick={handleClickOpen('paper')} */
