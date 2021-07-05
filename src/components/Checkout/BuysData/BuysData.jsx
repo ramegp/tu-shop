@@ -81,7 +81,7 @@ function BuysData(props) {
       >
         Comprar
       </Button>
-      <Pdf targetRef={props.referencia} filename="code-example.pdf" options={options} scale={0.8}>
+      <Pdf targetRef={props.referencia} filename="code-example.pdf" options={options} scale={0.6}>
         {({ toPdf }) => <Button onClick={toPdf}>Descargar Ticket</Button>}
       </Pdf>
     </Container>
