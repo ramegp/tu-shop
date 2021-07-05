@@ -10,6 +10,11 @@ import { useStateValue } from "../../../StateProvider";
 
 import {UseCart} from '../../../provider/CarritoContexto'
 
+
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
+
 function CheckoutDesktop() {
 
   const {cart} = UseCart();
@@ -25,7 +30,7 @@ function CheckoutDesktop() {
 
   return (
     <Container maxWidth="xl" className="container-checkout-desktop mb-8">
-      <Grid container spacing={2}>
+      <Grid container spacing={2} ref={ref}>
         <Grid item xs={12}>
           <Typography variant="h3" color="textSecondary" component="p">
             Contenido Carrito
@@ -37,6 +42,7 @@ function CheckoutDesktop() {
           sm={8}
           className="d-flex justify-content-center flex-wrap"
           id="padreCardsCheckout"
+          
         >
           {cart?.map((item) => (
             <CardCheckout
@@ -51,7 +57,7 @@ function CheckoutDesktop() {
           
         </Grid>
         <Grid item xs={12} sm={4}>
-          <BuysData />
+          <BuysData referencia={ref} />
         </Grid>
       </Grid>
     </Container>

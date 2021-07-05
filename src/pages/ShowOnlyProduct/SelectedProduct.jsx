@@ -47,7 +47,7 @@ function SelectedProduct() {
                   category={prod.category}
                   price={prod.price}
                   id={prod.id}
-                  img={prod.image}
+                  img={"/img/foto-0001.jpg"}
                   description={prod.description}
                 />
               </>

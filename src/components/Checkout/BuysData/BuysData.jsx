@@ -10,7 +10,16 @@ import { getFirestore } from "../../../firebase/firebase";
 import firebase from "firebase";
 import "firebase/firestore";
 
-function BuysData() {
+
+
+import Pdf from "react-to-pdf";
+
+const options = {
+  orientation: 'landscape',
+  
+};
+
+function BuysData(props) {
   const { cart, CalculatePrice } = UseCart();
 
   const [{ basket }, dispatch] = useStateValue();
@@ -23,25 +32,23 @@ function BuysData() {
     obtenerTotal();
   }, [cart]);
 
-  function cargarEnLaBase() {
-    const db = getFirestore();
-    const orders = db.collection("orders");
-    
+
+  const cargarEnLaBase = async () => {
     const newORder = {
       buyer: "Ramiro",
       items: cart,
       date: firebase.firestore.Timestamp.fromDate(new Date()),
       total: total,
     };
-    orders
-      .add(newORder)
-      .then(({ id }) => {
-        console.log(id);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  
+    try {
+      const db = getFirestore();
+      await db.collection("orders").doc().set(newORder);
+      alert("todo perfecto");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Container>
@@ -66,9 +73,17 @@ function BuysData() {
         <span>Total</span>
         <span>{total}</span>
       </Typography>
-      <Button onClick={cargarEnLaBase} variant="contained" color="secondary" className="bg-btn-checkout">
+      <Button
+        onClick={cargarEnLaBase}
+        variant="contained"
+        color="secondary"
+        className="bg-btn-checkout"
+      >
         Comprar
       </Button>
+      <Pdf targetRef={props.referencia} filename="code-example.pdf" options={options} scale={0.8}>
+        {({ toPdf }) => <Button onClick={toPdf}>Descargar Ticket</Button>}
+      </Pdf>
     </Container>
   );
 }

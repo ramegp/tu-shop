@@ -68,7 +68,7 @@ function ShowFood(props) {
                 category={prod.category}
                 price={prod.price}
                 id={prod.id}
-                img={`/public/assets/img/deliciosa-comida-rapida-estilo-pop-art_24908-61615.jpg`}
+                img={"/img/foto-0001.jpg"}
                 description={prod.description}
                 resto={props.name}
                 
