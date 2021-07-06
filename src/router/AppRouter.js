@@ -11,6 +11,7 @@ import ChooseRestaurant from '../pages/ChooseRestaurant/ChooseRestaurant';
 import Restaurant from '../pages/Restaurants/Restaurant';
 import SelectedProduct from '../pages/ShowOnlyProduct/SelectedProduct';
 import CategoryRestaurant from '../pages/CategoryRestaurant/CategoryRestaurant';
+import Administration from '../pages/Administration/Administration';
 function AppRouter() {
     return (
         <div>
@@ -22,6 +23,7 @@ function AppRouter() {
 
             <Route exact path="/choose-restaurant/:idResto" component={Restaurant}/>
             <Route exact path="/choose-restaurant" component={ChooseRestaurant}/>
+            <Route exact path="/admin" component={Administration} />
             <Route exact path="/" component={Home} />
 
             {/* <Route exact path="/shop" component={Shop} /> */}
