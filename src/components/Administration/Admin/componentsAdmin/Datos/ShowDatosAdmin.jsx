@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { getFirestore } from "../../../../../firebase/firebase";
+import React, { useEffect, useState } from 'react';
 import Select from "@material-ui/core/Select";
-import ShowProductsAdmin from "./ShowProductsAdmin";
+import { getFirestore } from '../../../../../firebase/firebase';
+import ShowProductsAdmin from '../Modificar/ShowProductsAdmin';
 
-function ModificarDatos() {
-  const [restaurants, setItems] = useState([]);
+function ShowDatosAdmin() {
+    const [restaurants, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [products, setProducts] = useState([])
@@ -49,12 +49,25 @@ function ModificarDatos() {
         setLoading(false);
       });
   }
-
-  return (
-    <div>
-      odificar
-    </div>
-  );
+    return (
+        <div>
+            <Select
+        native
+        defaultValue="" 
+        onChange={handleSelect}
+      >
+          <option>placeholder</option>
+          {restaurants !== null ?(restaurants.map((r,i)=>{return(
+              <option >{r.name}</option>
+          )})):(null)}
+        
+      </Select>
+      <div>
+          
+          {products !== null ? (<ShowProductsAdmin arreglo={products}/>):(null)}
+      </div>
+        </div>
+    )
 }
 
-export default ModificarDatos;
+export default ShowDatosAdmin
