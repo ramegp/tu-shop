@@ -3,12 +3,12 @@ import firebase from 'firebase/app'
 import '@firebase/firestore';
 
 const app = firebase.initializeApp({
-    apiKey: "AIzaSyCyWE1DOQuTHQk7jh3oNZ-p-GndIQv9QHQ",
+    apiKey: process.env.REACT_APP_API_KEY,
     authDomain: "tu-shop-ramegp.firebaseapp.com",
-    projectId: "tu-shop-ramegp",
+    projectId: process.env.REACT_APP_PROJECTID,
     storageBucket: "tu-shop-ramegp.appspot.com",
     messagingSenderId: "43386991179",
-    appId: "1:43386991179:web:b9ad4a5c26a2a1c56fd3ce"
+    appId: process.env.REACT_APP_APPID
 });
 
 export function getFireBase(params) {
