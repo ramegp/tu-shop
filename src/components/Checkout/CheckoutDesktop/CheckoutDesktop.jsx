@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React from "react";
 import "./CheckoutDesktop.css";
 import Grid from "@material-ui/core/Grid";
 import CardCheckout from "../CardCheckout/CardCheckout";
@@ -6,12 +6,11 @@ import BuysData from "../BuysData/BuysData";
 import Typography from "@material-ui/core/Typography";
 import { Container } from "@material-ui/core";
 
-import { useStateValue } from "../../../StateProvider";
+
 
 import {UseCart} from '../../../provider/CarritoContexto'
 
 
-import Pdf from "react-to-pdf";
 
 const ref = React.createRef();
 
@@ -19,14 +18,8 @@ function CheckoutDesktop() {
 
   const {cart} = UseCart();
 
-  const [{ basket }, dispatch] = useStateValue();
 
-  const [arr, setArr] = useState([])
 
-  /* useEffect(() => {
-    setArr(cart)
-    
-  }, [cart]) */
 
   return (
     <Container maxWidth="xl" className="container-checkout-desktop mb-8">

@@ -11,6 +11,10 @@ export function useUserAdministrator() {
 
 
 export function UserAdministrator({ children }) {
+    /* admin@admin.com YAnjgq2IvxYuFrOGNyqgufOJAUx1 */
+    /* tutor MLpP3pvVjCSMywomw9hlmGGaP9F2 */
+    /* mio  I6mnfOEZxWMxFxgmbTkhhX0suQs1 */
+    /* profesora  */
     const UID_ADMIN = "YAnjgq2IvxYuFrOGNyqgufOJAUx1";
 
     const [user, setUser] = useState(null);
@@ -49,7 +53,7 @@ export function UserAdministrator({ children }) {
 
         firebase.auth().signInWithPopup(provider)
             .then((result) => {
-                console.log(`${result} ha iniciado sesion`);
+                //console.log(`${result} ha iniciado sesion`);
                 //let Aux_user = firebase.auth().currentUser;
                 setUser(result.user);
                 administrador();
@@ -92,13 +96,14 @@ export function UserAdministrator({ children }) {
                 console.log(`Error ${error.code}: ${error.message}`)
                 
             });
+        
     }
 
 
     function close() {
         firebase.auth().signOut().then(() => {
             // Sign-out successful.
-            setUser()
+            setUser('')
             setES_ADMIN(false)
 
         }).catch((error) => {

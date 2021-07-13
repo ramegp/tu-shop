@@ -27,10 +27,8 @@ function takeCategories(arr) {
 
 function ShowFood(props) {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     const db = getFirestore();
     const itemCollection = db.collection(`${props.name}`);
     itemCollection
@@ -45,7 +43,6 @@ function ShowFood(props) {
         console.log("Error searching items", error);
       })
       .finally(() => {
-        setLoading(false);
       });
   }, []);
 
@@ -68,12 +65,12 @@ function ShowFood(props) {
                 category={prod.category}
                 price={prod.price}
                 id={prod.id}
-                img={"/img/foto-0001.jpg"}
+                img={prod.img}
                 description={prod.description}
                 resto={props.name}
                 
               />
-              {console.log(prod.id)}
+              
             </>
           );
         })

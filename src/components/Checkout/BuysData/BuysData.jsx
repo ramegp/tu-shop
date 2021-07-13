@@ -4,7 +4,6 @@ import Typography from "@material-ui/core/Typography";
 import { Container } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 
-import { useStateValue } from "../../../StateProvider";
 import { UseCart } from "../../../provider/CarritoContexto";
 import { getFirestore } from "../../../firebase/firebase";
 import firebase from "firebase";
@@ -13,6 +12,7 @@ import "firebase/firestore";
 
 
 import Pdf from "react-to-pdf";
+import { useUserAdministrator } from "../../../provider/UserAdministrator";
 
 const options = {
   orientation: 'landscape',
@@ -22,8 +22,10 @@ const options = {
 function BuysData(props) {
   const { cart, CalculatePrice } = UseCart();
 
-  const [{ basket }, dispatch] = useStateValue();
   const [total, setTotal] = React.useState(0);
+
+  const { user } = useUserAdministrator();
+
 
   const obtenerTotal = () => {
     setTotal(CalculatePrice());
@@ -35,7 +37,7 @@ function BuysData(props) {
 
   const cargarEnLaBase = async () => {
     const newORder = {
-      buyer: "Ramiro",
+      buyer: user.email,
       items: cart,
       date: firebase.firestore.Timestamp.fromDate(new Date()),
       total: total,
@@ -73,7 +75,8 @@ function BuysData(props) {
         <span>Total</span>
         <span>{total}</span>
       </Typography>
-      <Button
+      { user ?(<>
+        <Button
         onClick={cargarEnLaBase}
         variant="contained"
         color="secondary"
@@ -84,6 +87,8 @@ function BuysData(props) {
       <Pdf targetRef={props.referencia} filename="code-example.pdf" options={options} scale={0.6}>
         {({ toPdf }) => <Button onClick={toPdf}>Descargar Ticket</Button>}
       </Pdf>
+      </>):(<p> Debes logearte para poder comprar </p>)}
+      
     </Container>
   );
 }

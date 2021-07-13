@@ -4,15 +4,13 @@ import Button from "@material-ui/core/Button";
 
 import IconButton from "@material-ui/core/IconButton";
 
-import { actionTypes } from "../../reducer";
-import { useStateValue } from "../../StateProvider";
 
 import { UseCart } from "../../provider/CarritoContexto";
 
 function ASingleProduct(props) {
   const { AddToCart } = UseCart();
 
-  const [{ basket }, dispatch] = useStateValue();
+
   const max = 10;
   const min = 0;
   const [countItem, setCountItem] = React.useState(0);
@@ -25,19 +23,6 @@ function ASingleProduct(props) {
     countItem > min ? setCountItem(countItem - 1) : setCountItem(min);
   };
   
-  const addToBasket = () => {
-    dispatch({
-      type: actionTypes.ADD_TO_BASKET,
-      item: {
-        id: props.id,
-        name: props.name,
-        image: props.img,
-        price: props.price,
-        description: props.description,
-        amount: countItem,
-      },
-    });
-  };
 
   return (
     <>

@@ -1,0 +1,11 @@
+.tabla-datos{
+    color:blueviolet;
+    background-color: cadetblue;
+    width: 90%;
+}
+
+.width-datos-prod{
+    padding: 5px;
+    width: auto;
+    background-color: rgb(198, 209, 209);
+}

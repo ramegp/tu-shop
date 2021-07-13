@@ -1,16 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Select from "@material-ui/core/Select";
-import { getFirestore } from '../../../../../firebase/firebase';
-import ShowProductsAdmin from '../Modificar/ShowProductsAdmin';
+import { getFirestore } from "../../../../../firebase/firebase";
+import ShowProductsAdmin from "../Modificar/ShowProductsAdmin";
+
+
+import ModificarDatos from "../Modificar/ModificarDatos";
 
 function ShowDatosAdmin() {
-    const [restaurants, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [restaurants, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [selecResto, setSelectResto] = useState("");
 
-  const [products, setProducts] = useState([])
+  //variables del producto editado
+  const [editarPrendido, setEditarPrendido] = useState(false);
+  const [productoID, setproductoID] = useState("");
+  const [productoTitle, setproductoTitle] = useState("");
+  const [productoCat, setproductoCat] = useState("");
+  const [productoDesc, setproductoDesc] = useState("");
+  const [productoPrice, setproductoPrice] = useState(0);
 
   useEffect(() => {
-    setLoading(true);
     const db = getFirestore();
     const itemCollection = db.collection("restaurants");
     itemCollection
@@ -25,15 +34,20 @@ function ShowDatosAdmin() {
         console.log("Error searching items", error);
       })
       .finally(() => {
-        setLoading(false);
       });
   }, []);
-  
-  const handleSelect = (e) => {
-    console.log(e.target.value.toLowerCase())
 
+  const buildProductoEdit = (id, obj) => {
+    setproductoID(id);
+    setproductoTitle(obj.title);
+    setproductoCat(obj.category);
+    setproductoDesc(obj.description);
+    setproductoPrice(obj.price);
+  };
+
+  const bringProductosBD = (resto) => {
     const db = getFirestore();
-    const itemCollection = db.collection(`r-${e.target.value.toLowerCase()}`);
+    const itemCollection = db.collection(`r-${resto}`);
     itemCollection
       .get()
       .then((querySnapshot) => {
@@ -46,28 +60,118 @@ function ShowDatosAdmin() {
         console.log("Error searching items", error);
       })
       .finally(() => {
-        setLoading(false);
       });
-  }
-    return (
-        <div>
-            <Select
+  };
+
+  const handleSelect = (e) => {
+    setSelectResto(e.target.value.toLowerCase());
+    bringProductosBD(e.target.value.toLowerCase());
+    setEditarPrendido(false);
+  };
+
+  const handleDelete = (coleccionDelProducto, id) => {
+    const db = getFirestore();
+    db.collection(`r-${coleccionDelProducto}`)
+      .doc(id)
+      .delete()
+      .then(() => {
+        //console.log("Document successfully deleted!");
+        //console.log(`Se borro de ${coleccionDelProducto} id: ${id}`);
+        bringProductosBD(coleccionDelProducto);
+      })
+      .catch((error) => {
+        console.error("Error removing document: ", error);
+      });
+  };
+  const handleEdit = (coleccionDelProducto, id, obj) => {
+    //alert(`${id} ${coleccionDelProducto}`);
+    buildProductoEdit(id, obj);
+    //console.log(`producto a editar Nombre ${productoTitle} precio ${productoPrice}`);
+    setEditarPrendido(true);
+  };
+
+  const handleSaveProductEdit = () => {
+    setEditarPrendido(false);
+
+    let obj = {
+      title:productoTitle,
+      id:productoID,
+      description: productoDesc,
+      category:productoCat,
+      price: productoPrice
+    }
+
+    const db = getFirestore();
+    let modifyProduc = db.collection(`r-${selecResto}`).doc(productoID);
+
+    // Set the "capital" field of the city 'DC'
+    return modifyProduc
+      .update(obj)
+      .then(() => {
+        console.log("Document successfully updated!");
+        bringProductosBD(selecResto)
+      })
+      .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+      });
+
+      
+  };
+
+  return (
+    <div>
+      <Select
         native
-        defaultValue="" 
+        defaultValue=""
+        style={{ margin: 8, width: "50%" }}
         onChange={handleSelect}
       >
-          <option>placeholder</option>
-          {restaurants !== null ?(restaurants.map((r,i)=>{return(
-              <option >{r.name}</option>
-          )})):(null)}
-        
+        <option>placeholder</option>
+        {restaurants !== null
+          ? restaurants.map((r, i) => {
+              return <option>{r.name}</option>;
+            })
+          : null}
       </Select>
+      {editarPrendido && (
+        <>
+          <div>
+            <ModificarDatos
+            key={"modificarProductos"}
+              producto={{
+                id: productoID,
+                title: productoTitle,
+                category: productoCat,
+                description: productoDesc,
+                price: productoPrice,
+              }}
+              modificar={buildProductoEdit}
+              guardar={handleSaveProductEdit}
+              resto={selecResto}
+              seters={{
+                title: setproductoTitle,
+                price: setproductoPrice,
+                category: setproductoCat,
+                description: setproductoDesc
+              }}
+            />
+          </div>
+        </>
+      )}
       <div>
-          
-          {products !== null ? (<ShowProductsAdmin arreglo={products}/>):(null)}
+        {products !== null ? (
+          <ShowProductsAdmin
+            key={"mostrarProductos"}
+            arreglo={products}
+            perteneceA={selecResto}
+            delete={handleDelete}
+            edit={handleEdit}
+          />
+        ) : null}
       </div>
-        </div>
-    )
+    </div>
+  );
 }
 
-export default ShowDatosAdmin
+export default ShowDatosAdmin;

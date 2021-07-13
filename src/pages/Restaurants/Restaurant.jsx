@@ -10,7 +10,7 @@ function Restaurant() {
     return (
         <div className="container-resto">
             <BannerTituloRestaurant name={idResto}/>
-            <ShowFood name={idResto}/>
+            <ShowFood name={idResto} key={idResto}/>
             
         </div>
     )

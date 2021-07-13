@@ -8,10 +8,8 @@ import ASingleProduct from "../../components/CardProducts/ASingleProduct";
 function SelectedProduct() {
   const { idResto, idProduc } = useParams();
   const [item, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     const db = getFirestore();
     const itemCollection = db
       .collection(`${idResto}`)
@@ -28,14 +26,13 @@ function SelectedProduct() {
         console.log("Error searching items", error);
       })
       .finally(() => {
-        setLoading(false);
       });
   }, []);
 
   return (
     <div className="container-selectec-product">
-      <BannerTituloRestaurant name={idResto} />
-      {console.log(idResto, idProduc)}
+      <BannerTituloRestaurant name={idResto} key={`baner-${idResto}`}/>
+      
       <div className="d-flex justify-content-center alignItems-center">
         {item !== null ? (
           item.map((prod, index) => {
@@ -47,8 +44,9 @@ function SelectedProduct() {
                   category={prod.category}
                   price={prod.price}
                   id={prod.id}
-                  img={"/img/foto-0001.jpg"}
+                  img={prod.img}
                   description={prod.description}
+                  key={"producto-seleccionado"}
                 />
               </>
             );

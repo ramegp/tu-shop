@@ -1,6 +1,6 @@
 .container-resto{
     background-color: blueviolet;
-    height: 100vh;
+    height: auto;
 }
 
 @media (max-width:1254px) {

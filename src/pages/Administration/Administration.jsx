@@ -9,7 +9,7 @@ import ContenedorAdmin from '../../components/Administration/Admin/ContenedorAdm
 
 function Administration() {
 
-    const { user, ES_ADMIN, close, addUserLogeado, printUser } =
+    const { user, ES_ADMIN, addUserLogeado } =
     useUserAdministrator();
   const [admin, setAdmin] = useState(false);
 

@@ -7,10 +7,9 @@ import { getFirestore } from "../../firebase/firebase";
 
 function ChooseRestaurant() {
   const [restaurants, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
+    
     const db = getFirestore();
     const itemCollection = db.collection("restaurants");
     itemCollection
@@ -25,7 +24,6 @@ function ChooseRestaurant() {
         console.log("Error searching items", error);
       })
       .finally(() => {
-        setLoading(false);
       });
   }, []);
   return (
@@ -42,12 +40,7 @@ function ChooseRestaurant() {
       ) : (
         <div>cargando</div>
       )}
-        
-      {/* <BannerChoose name="Gocha" />
-      <BannerChoose name="Otilia" />
-      <BannerChoose name="Ver   Todos" />
-      <BannerChoose name="Dean&Dennis" />
-      <BannerChoose name="Deniro" /> */}
+       
     </div>
   );
 }

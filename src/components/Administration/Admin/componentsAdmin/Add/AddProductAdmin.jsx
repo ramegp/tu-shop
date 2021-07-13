@@ -6,7 +6,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import FilledInput from "@material-ui/core/FilledInput";
 import Button from "@material-ui/core/Button";
 import { getFirestore } from "../../../../../firebase/firebase";
-
+import firebase from "firebase";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +27,10 @@ function AddProductAdmin() {
   const [var_Category, setVar_Category] = useState("");
   const [var_Description, setVar_Description] = useState("");
   const [var_Price, setVar_Price] = useState(0);
+  const [var_File, setVar_File] = useState("");
   const [var_Resto, setVar_Resto] = useState("");
+
+  const [loadFile, setLoadFile ] = useState(false);
 
   const handleTitle = (e) => {
     setVar_Title(e.target.value);
@@ -41,40 +44,56 @@ function AddProductAdmin() {
   const handlePrice = (e) => {
     setVar_Price(parseInt(e.target.value));
   };
+  const handleImg = (e)=>{
+    //console.log(e.target.files[0]);
+    if (e.target.files[0]) {
+      setLoadFile(true);
+      let file = e.target.files[0];
+      const storageRef = firebase.storage().ref(`/fotos/${file.name}`)
+      const task = storageRef.put(file);
+      setVar_File(`${file.name}`)
+    } else {
+      setLoadFile(false);
+    }
+  }
+
   const handleResto = (e) => {
     setVar_Resto(`r-${(e.target.value).toLowerCase()}`);
   };
 
   const handleCargar = async () => {
-    console.log(`nombre ${var_Title}`);
-    console.log(`nombre ${var_Category}`);
-    console.log(`nombre ${var_Description}`);
-    console.log(`precio ${var_Price}`);
-    console.log(`Cargado en ${var_Resto}`);
-
     let obj={
-        title: var_Title,
-        category: var_Category,
-        description: var_Description,
-        price: var_Price
-    }
-    
-    try {
+      title: var_Title,
+      category: var_Category,
+      description: var_Description,
+      price: var_Price,
+      
+  }
+    //obtener la direccion de descarga de la imagen subida
+    firebase.storage().ref().child(`fotos/${var_File}`).getDownloadURL().then( async function(url)  {
+      setVar_File(url);
+      obj.img = url;
+      
+      try {
         const db = getFirestore();
-        await db.collection(`${var_Resto}`).doc().set(obj);
+        let upProduct = await db.collection(`${var_Resto}`).doc()
+        obj.id = upProduct.id;
+        upProduct.set(obj);
         alert("todo perfecto");
       } catch (error) {
         console.log(error);
       }
+
+      }).catch(function(error) {
+        
+      });
+
   };
 
   const [restaurants, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
+    
     const db = getFirestore();
     const itemCollection = db.collection("restaurants");
     itemCollection
@@ -89,21 +108,20 @@ function AddProductAdmin() {
         console.log("Error searching items", error);
       })
       .finally(() => {
-        setLoading(false);
       });
   }, []);
 
   return (
     <>
       <div className={classes.root}>
-        <div>
+        <div className="d-flex flex-wrap justify-content-center align-items-center flex-column">
           <TextField
             id="title"
             label="Nombre Producto"
-            style={{ margin: 8 }}
+            /* style={{ margin: 8 }} */
             placeholder="Nombre"
             
-            fullWidth
+            /* fullWidth */
             margin="normal"
             InputLabelProps={{
               shrink: true,
@@ -114,10 +132,10 @@ function AddProductAdmin() {
           <TextField
             id="category"
             label="Categoria producto"
-            style={{ margin: 8 }}
+            /* style={{ margin: 8 }} */
             placeholder="Categoria"
             
-            fullWidth
+            /* fullWidth */
             margin="normal"
             InputLabelProps={{
               shrink: true,
@@ -128,10 +146,10 @@ function AddProductAdmin() {
           <TextField
             id="description"
             label="Descripcion producto"
-            style={{ margin: 8 }}
+            /* style={{ margin: 8 }} */
             placeholder="Descripcion"
             
-            fullWidth
+            /* fullWidth */
             margin="normal"
             InputLabelProps={{
               shrink: true,
@@ -141,11 +159,26 @@ function AddProductAdmin() {
           />
           <FilledInput
             id="price"
-            fullWidth
-            style={{ margin: 8 }}
+            /* fullWidth */
+            /* style={{ margin: 8 }} */
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
             onChange={handlePrice}
           />
+          <TextField
+            type="file"
+            id="file"
+            label="Imagen del producto"
+            /* style={{ margin: 8 }} */
+            placeholder="Descripcion"
+            /* fullWidth */
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="filled"
+            onChange={handleImg}
+          />
+          {!loadFile && <p>Cargue una imagen para poder cargar el producto. Se habilitara el boton de guardar</p>}
         </div>
       </div>
       <div className="d-flex justify-content-center align-items-center flex-wrap">
@@ -158,7 +191,7 @@ function AddProductAdmin() {
         SelectProps={{
           native: true,
         }}
-        style={{ margin: 8 }}
+        /* style={{ margin: 8 }} */
         helperText="Seleccione el restaurante donde cargar el producto"
         variant="filled"
       >
@@ -168,10 +201,11 @@ function AddProductAdmin() {
           </option>
         ))}
       </TextField>
-      <Button variant="contained" color="secondary" onClick={handleCargar}>
+      {loadFile && <Button variant="contained" color="secondary" onClick={handleCargar}>
         {" "}
         Cargar Producto{" "}
-      </Button>
+      </Button>}
+      
       </div>
     </>
   );

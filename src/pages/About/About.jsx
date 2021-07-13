@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import "./About.css";
 import Grid from "@material-ui/core/Grid";
 
@@ -7,7 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import mapsDireccionTienda from "../../assets/img/mapsTienda.png";
 
 function About() {
-  const { name } = useParams();
   return (
     <>
       <Grid container direction="row" justify="center" alignItems="center">

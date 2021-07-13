@@ -2,8 +2,6 @@ import React from "react";
 import { Container } from "@material-ui/core";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import TituloDesktop from "../../components/Titulo/TituloDesktop";
-import ButtonHome from "../../components/Buttons/ButtonsHome/ButtonHome";
 
 function Home() {
   return (

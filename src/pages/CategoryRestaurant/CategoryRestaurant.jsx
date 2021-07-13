@@ -11,10 +11,8 @@ function CategoryRestaurant() {
   const { idResto, idCat } = useParams();
 
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     const db = getFirestore();
     const itemCollection = db
       .collection(`${idResto}`)
@@ -31,7 +29,6 @@ function CategoryRestaurant() {
         console.log("Error searching items", error);
       })
       .finally(() => {
-        setLoading(false);
       });
   }, []);
 
@@ -47,7 +44,7 @@ function CategoryRestaurant() {
                   category={prod.category}
                   price={prod.price}
                   id={prod.id}
-                  img={`assets/img/deliciosa-comida-rapida-estilo-pop-art_24908-61615.jpg`}
+                  img={prod.img}
                   description={prod.description}
                   resto={idResto}
                 />
