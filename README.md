@@ -3,7 +3,7 @@
 Proyecto de un e-commerce para aprender el uso y funcionalidades de **ReactJS**. 
 Se conecta con firebase como base de datos que nos ayuda a la autentificacion.
 
-El proyecto tiene un panel de administrador para poder agregar productos, ver las ordenes de compra realizadas, poder ver los productos cargados.
+El proyecto tiene un panel de administrador para poder agregar,actualizar y eliminar productos.
 Cuanta con una pagina para hacer el login de los usuarios.
 Carrito de compra con opcion de descargar un pdf como ticket, mostrando los productos que compraste.
 
