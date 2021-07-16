@@ -30,9 +30,9 @@ function App() {
 
             <MenuDesktop />
             <MenuMobile />
-            <Switch>
-              <AppRouter />
-            </Switch>
+
+            <AppRouter />
+
           </Router>
 
         </CarritoContexto>
