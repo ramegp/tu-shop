@@ -24,4 +24,5 @@ title: "Nombre del producto"
 category: "Categoria del producto"
 description: "Descripcion del producto"
 price: "Precio del producto"
+img: "Ruta de donde se encuetra la imagen"
 ```
