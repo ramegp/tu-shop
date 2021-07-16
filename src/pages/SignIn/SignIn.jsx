@@ -129,7 +129,7 @@ export default function SignIn() {
               color="primary"
               className={classes.submit}
               onClick={(e) => {
-                //e.preventDefault();
+                e.preventDefault();
                 handleSingUpWithoutGoogle(email, password);
               }}
             >
